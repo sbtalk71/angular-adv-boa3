@@ -1,0 +1,12 @@
+Add User: <input type="text" #inputRef>
+<button (click)="addUser(inputRef.value)">Add User</button>
+
+<hr>
+<ul>
+  @for (user of usersData$|async; track $index) {
+<li>
+  <span>{{user.name}}</span>
+  <button (click)="removeUser(user.id)">Remove</button>
+</li>
+  }
+</ul>
