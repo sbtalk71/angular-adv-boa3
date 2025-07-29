@@ -7,4 +7,20 @@
 <button (click)="changeSignalValue()">Change SIgnal Value</button>
 
 <hr>
+<!--
 <app-signals-counter></app-signals-counter>
+
+<app-new-directives></app-new-directives>
+-->
+
+@defer (on timer(5s)) {
+    <app-deferred></app-deferred>
+}@placeholder {
+    <h3>Component will load here in 5 seconds</h3>
+}
+
+@defer (on hover) {
+    <app-deferred></app-deferred>
+}@placeholder {
+    <h3>Component will load on mouse over</h3>
+}

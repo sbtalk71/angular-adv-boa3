@@ -1,9 +1,11 @@
 import { Component, computed, effect, signal } from '@angular/core';
 import { SignalsCounterComponent } from './signals-counter/signals-counter.component';
+import { NewDirectivesComponent } from './new-directives/new-directives.component';
+import { DeferredComponent } from './deferred/deferred.component';
 
 @Component({
   selector: 'app-root',
-  imports: [SignalsCounterComponent],
+  imports: [SignalsCounterComponent,NewDirectivesComponent,DeferredComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

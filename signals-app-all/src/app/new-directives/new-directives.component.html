@@ -1,0 +1,57 @@
+<h1>new Directives</h1>
+
+<h3>Old If</h3>
+<div *ngIf="isAdmin;then admin; else normal"></div>
+
+<ng-template #admin>
+    <h3> Welcome Admin</h3>
+</ng-template>
+
+<ng-template #normal>
+    <h3> Welcome Normal User</h3>
+</ng-template>
+<hr>
+
+<h3>New If</h3>
+@if (isAdmin) {
+    <h3>Welcome new Admin</h3>
+}@else {
+    <h3>Welcome new Normal User</h3>
+}
+
+<!--ngFor-->
+<ul>
+    <li *ngFor="let user of users; trackBy: trackById">{{user.name}}</li>
+</ul>
+
+<ul>
+@for (user of users; track user.id) {
+<li>{{user.name}}</li>
+}
+</ul>
+<button (click)="updateUsers()">Update Users</button>
+
+<hr>
+<h2>Switch case</h2>
+@switch (status) {
+@case ('loading') {
+    <p>Loading...</p>
+}
+@case ('success') {
+    <p>Data Loaded...</p>
+}
+@case ('error') {
+    <p>Error Loading...</p>
+}
+@default {
+    <p>Status not known...</p>
+}
+}
+
+<h2>Let Demo</h2>
+
+@let totalPrice=items*price;
+
+<h2>{{totalPrice}}</h2>
+
+
