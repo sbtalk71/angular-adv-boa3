@@ -1,0 +1,12 @@
+<app-usercard 
+      *ngFor="let user of users"
+      [user]="user"
+      (delete)="removeUser($event)">
+</app-usercard>
+
+@for (user of users; track $index) {
+    <app-usercard 
+      [user]="user"
+      (delete)="removeUser($event)">
+</app-usercard>
+}

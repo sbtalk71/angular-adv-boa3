@@ -26,8 +26,8 @@ export class UserListComponent {
   activeUsers$: Observable<User[]>;
 
   constructor(private store: Store<AppState>) {
-   this.activeUsers$ = this.store.select(selectActiveUsers);
-   //this.activeUsers$ = this.store.select(getActiveUsersManually);
+  //this.activeUsers$ = this.store.select(selectActiveUsers);
+   this.activeUsers$ = this.store.select(getActiveUsersManually);
   }
 
   toggleStatus(userId: number) {
