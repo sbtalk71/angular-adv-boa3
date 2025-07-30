@@ -1,0 +1,6 @@
+<h2>Products List</h2>
+<ul>
+@for (product of data; track $index) {
+<li>{{product.id}} &nbsp; {{product.title}}&nbsp; {{product.price}} &nbsp;{{product.category}}</li>
+}
+</ul>

@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class EditUserComponent {
 
+  canExit(){
+    if(window.confirm("Do you want to leave the page..")){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }
