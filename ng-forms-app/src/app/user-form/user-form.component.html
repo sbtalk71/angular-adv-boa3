@@ -1,0 +1,29 @@
+<h2>User Registration Form</h2>
+<hr>
+<div style="margin-left: 50px;">
+ <form [formGroup]="userForm">
+    <div>
+        <label>Name:
+            <input type="text" name="username" formControlName="username">
+            <small *ngIf="userForm.get('username')?.errors?.['required'] &&userForm.get('username')?.touched" style="color:red">Name is required</small>
+        </label>
+    </div>
+    <div>
+        <label>Email:
+            <input type="email" name="email" formControlName="email">
+        </label>
+    </div>
+    <div>
+        <label>Age:
+            <input type="number" name="age" formControlName="age">
+        </label>
+    </div>
+    <div>
+        <label>Phone:
+            <input type="text" name="phone" formControlName="phone">
+        </label>
+    </div>
+    <button type="submit">Register</button>
+ </form>
+<p>{{userForm.value|json}}</p>
+</div>
