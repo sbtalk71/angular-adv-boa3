@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { forbiddenNameValidator, ForbiddenNameValidator } from '../fbn.validator';
 
 @Component({
   selector: 'app-user-form',
@@ -27,10 +28,14 @@ export class UserFormComponent {
     */
    initForm(){
     this.userForm=this.fb.group({
-      username:['',[Validators.required,Validators.minLength(4)]],
+      username:['',[Validators.required,Validators.minLength(4),forbiddenNameValidator(/admin/)]],
       email:['',[Validators.required,Validators.email]],
-      age: ['',[Validators.required,Validators.pattern('/^1[0-9]|[2-9][0-9]$/')]],
+      age: ['',[Validators.required,Validators.pattern('1[0-9]|[2-9][0-9]')]],
       phone: ['',[Validators.required]]
     });
+   }
+
+   handleSubmit(){
+    console.log(this.userForm.value)
    }
 }

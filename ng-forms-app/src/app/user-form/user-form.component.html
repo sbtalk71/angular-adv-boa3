@@ -1,21 +1,28 @@
 <h2>User Registration Form</h2>
 <hr>
 <div style="margin-left: 50px;">
- <form [formGroup]="userForm">
+ <form [formGroup]="userForm" (submit)="handleSubmit()">
     <div>
         <label>Name:
             <input type="text" name="username" formControlName="username">
             <small *ngIf="userForm.get('username')?.errors?.['required'] &&userForm.get('username')?.touched" style="color:red">Name is required</small>
+            <small *ngIf="userForm.get('username')?.errors?.['minlength'] &&userForm.get('username')?.touched" style="color:red">name is min 4 chars</small>
+            <small *ngIf="userForm.get('username')?.errors?.['forbiddenName']" style="color:red">Name not allowed</small>
         </label>
     </div>
     <div>
         <label>Email:
             <input type="email" name="email" formControlName="email">
+            <small *ngIf="userForm.get('email')?.errors?.['required'] &&userForm.get('email')?.touched" style="color:red">Email Required</small>
+            <small *ngIf="userForm.get('email')?.errors?.['email']" style="color:red">Invalid Email</small>
         </label>
     </div>
     <div>
         <label>Age:
             <input type="number" name="age" formControlName="age">
+            <small *ngIf="userForm.get('age')?.errors?.['required'] &&userForm.get('age')?.touched" style="color:red">Age Required</small>
+            <small *ngIf="userForm.get('age')?.errors?.['pattern']" style="color:red">Age Not Valid</small>
+            
         </label>
     </div>
     <div>
@@ -26,4 +33,5 @@
     <button type="submit">Register</button>
  </form>
 <p>{{userForm.value|json}}</p>
+<p>{{userForm.get('age')?.errors|json}}</p>
 </div>
