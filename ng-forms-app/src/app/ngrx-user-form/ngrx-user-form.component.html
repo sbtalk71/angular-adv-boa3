@@ -1,0 +1,15 @@
+<h1>User Form</h1>
+<hr>
+<div style="margin-left: 50px;">
+    <form [formGroup]="userform" (submit)="handleSubmit()">
+        <div>
+            <label>Name: </label>
+            <input type="text" name="username" formControlName="username">
+        </div>
+        <div>
+            <label>Email: </label>
+            <input type="email" name="email" formControlName="email">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

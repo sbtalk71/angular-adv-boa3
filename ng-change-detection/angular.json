@@ -3,34 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "routing-app": {
+    "ng-change-detection": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:component": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": true
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "skipTests": true
-        },
-        "@schematics/angular:resolver": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -38,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/routing-app",
+            "outputPath": "dist/ng-change-detection",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -54,12 +29,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -89,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "routing-app:build:production"
+              "buildTarget": "ng-change-detection:build:production"
             },
             "development": {
-              "buildTarget": "routing-app:build:development"
+              "buildTarget": "ng-change-detection:build:development"
             }
           },
           "defaultConfiguration": "development"
