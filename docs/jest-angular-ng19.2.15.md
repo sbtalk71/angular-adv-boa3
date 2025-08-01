@@ -1,4 +1,4 @@
-# Configure Jest with angular 19
+# Configure Jest with angular 19.2.15
 
 ---
 
@@ -6,51 +6,56 @@
 1. **Unistall Karma and Jasmine**
 
 ```sh
-	npm uninstall karma karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter @types/jasmine jasmine-core
+	npm uninstall karma karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter
 ```
 
-2. **Install Jest, its types, and presets for Angular and also *ts-node* **
-	*ts-node is required to resd .ts files by Jest*
+2. **Install Jest and its supporting packages**
+	
 	
 ```sh
-	npm i --save-dev jest @types/jest jest-preset-angular ts-node
+	npm install --save-dev jest jest-environment-jsdom @types/jest ts-jest
 ```
 
-3. **Create a `setup-jest.ts` file in your project’s root folder**
-
-	And add that single line of code in it:
-	//import 'jest-preset-angular/setup-jest'; //deprecated
-
-	add:
-```ts
-	// setup-jest.ts
-	 import { setupZoneTestEnv } from 'jest-preset-angular/setup-env/zone';
-		
-	 setupZoneTestEnv();
-```
-
-4. **Create a `jest.config.ts` file in your project’s root folder with the following command**
+3. **Initialize Jest Config**
 
 ```sh
-	npx jest — init
+	npx ts-jest config:init
 ```
 
-	Then ensure you have the following config options set in that file:
+	The Above commands create the following code:
 ```ts
-	preset: 'jest-preset-angular',
-	setupFilesAfterEnv: ['./setup-jest.ts']
+	/** @type {import('ts-jest').JestConfigWithTsJest} */
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  moduleFileExtensions: ['ts', 'html', 'js', 'json'],
+  transform: {
+    '^.+\\.(ts|mjs|html)$': ['ts-jest', { tsconfig: 'tsconfig.spec.json' }],
+  },
+  testMatch: ['**/*.spec.ts'],
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.spec.json',
+    },
+  },
+};
 
 ```
-5. **Update your `tsconfig.spec.json` file**
+4. **Update your `tsconfig.spec.json` file**
 
-	Your compilerOptions should look like this:
+	Make sure your `tsconfig.spec.json` looks like this:
 ```ts
-	"compilerOptions": {
-	"outDir": "./out-tsc/spec",
-	"types": [ "jest" ],
-	"esModuleInterop": true,
-	"emitDecoratorMetadata": true
-	},
+	{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": ["jest"],
+    "esModuleInterop": true
+  },
+  "files": ["src/test.ts"],
+  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
+}
+
 ```
 
 6. **Last step: Update *package.json* **
