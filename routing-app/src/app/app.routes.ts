@@ -7,6 +7,8 @@ import { AdminComponent } from "./pages/admin/admin.component";
 import { LoginComponent } from "./login/login.component";
 import { authGuard } from "./auth.guard";
 import { editGuard } from "./edit.guard";
+import { inject } from "@angular/core";
+import { AuthService } from "./auth.service";
 
 export const routes:Routes=[
     {path:"adduser",component:AddUserComponent},
@@ -16,5 +18,8 @@ export const routes:Routes=[
     {path:"login",component:LoginComponent},
     {path:"admin",loadComponent:()=>import('./pages/admin/admin.component').then(m=>m.AdminComponent),data:{"preload":true},canActivate:[authGuard]},
     {path:"store",loadChildren:()=>import('./store/store.module').then(m=>m.StoreModule),data:{"preload":true}},
-    {path:"store2",loadChildren:()=>import('./store/app.routes').then(m=>m.CHILD_ROUTES)}
+    {path:"store2",loadChildren:()=>import('./store/app.routes').then(m=>m.CHILD_ROUTES)},
+    {path:"superuser",redirectTo:()=>{
+        return inject(AuthService).isLoggedIn()?'/store':'/login'
+    },pathMatch:"full"}
 ]

@@ -16,7 +16,7 @@ export class LoginComponent {
   }
 
   doLogin(){
-    this.auth.login("admin","admin125");
+    this.auth.login("admin","admin123");
     if(this.auth.isLoggedIn()){
       this.router.navigate(["admin"])
     }else{
