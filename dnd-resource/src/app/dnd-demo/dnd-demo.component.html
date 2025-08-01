@@ -1,0 +1,11 @@
+<h2>Drag and Drop With Angular CDK</h2>
+
+<div cdkDrag>
+    Drag me!
+</div>
+
+<div cdkDropList class="example-list">
+    @for (fruit of fruits; track $index) {
+        <div cdkDrag class="example-box">{{fruit}}</div>
+    }
+</div>

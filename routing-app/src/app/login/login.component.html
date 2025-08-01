@@ -1,2 +1,17 @@
 <h2>Login To Proceed</h2>
-<button (click)="doLogin()">Login</button>
+<div>
+    <form (ngSubmit)="doLogin()" #loginForm="ngForm">
+        <div>
+            <label>
+                Username:
+                <input type="text" name="username" [(ngModel)]="user.username">
+            </label>
+            <label>
+                Username:
+                <input type="text" name="password" [(ngModel)]="user.password">
+            </label>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</div>
+

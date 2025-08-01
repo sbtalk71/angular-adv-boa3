@@ -1,0 +1,12 @@
+<h2>Resource using Signals</h2>
+@if (productResource.isLoading()) {
+    <h2>Data Loading...</h2>
+}
+@if (productResource.error()) {
+    <h2>Error in fetching Data {{productResource.error()}}</h2>
+}
+
+@if (productResource.value()) {
+    <h2>{{productResource.value()?.title}}</h2>
+    <h2>{{productResource.value()?.price}}</h2>
+}
